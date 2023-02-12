@@ -12,5 +12,5 @@ export interface landData extends Document{
     image: string,
     price: string,
     location: string,
-    views: string
+    views: []
 }
