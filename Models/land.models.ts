@@ -22,4 +22,4 @@ const landSchema = new Schema({
 
 const LandModels = model<AllLands>("LANDS", landSchema);
 
-export const LandModels;
+export default LandModels;
