@@ -1,4 +1,3 @@
-
 export enum HTTPCODES {
     OK = 200,
     CREATED = 201,
@@ -9,33 +8,32 @@ export enum HTTPCODES {
     FORBIDDEN = 403,
     NOT_FOUND = 404,
     INTERNAL_SERVER_ERROR = 500
-};
+}
 
 interface ErrorTags {
     name?: string,
     message?: string,
     isOperational?: boolean,
-    httpCode?: HTTPCODES
-};
+    httpcode?: HTTPCODES
+}
 
 export class AppError extends Error {
     public readonly name: string;
     public readonly isOperational: boolean = true;
-    public readonly httpCodes: HTTPCODES;
+    public readonly httpcodes: HTTPCODES;
 
-    constructor (args: ErrorTags) {
+    constructor ( args: ErrorTags ) {
         super(args.message)
 
         Object.setPrototypeOf(this, new.target.prototype);
 
-        this.name = args.name || "Error";
-        this.httpCodes = args.httpCode;
+        this.name = args.name || "error";
+        this.httpcodes = args.httpcode;
 
         if (args.isOperational !== undefined) {
             this.isOperational = args.isOperational
         }
 
-        Error.captureStackTrace(this)
+        Error.captureStackTrace(this);
     }
-
 }
