@@ -1,15 +1,15 @@
 import { Request, Response, NextFunction } from "express";
-import { AppError, HTTPCODES } from "../../Utils/AppError"
+import { AppError } from "../../Utils/AppError";
 
-const DevErrorHandler = (err: AppError, res: Response) =>{
-    return res.status(HTTPCODES.BAD_REQUEST).json({
+const DevErrorHandler = (req: Request, err : AppError, res: Response, next: NextFunction) => {
+    return res.status(err.httpcodes).json({
         name: err.name,
-        message: err.message,
         httpcode: err.httpcodes,
-        stack: err.stack
+        stack : err.stack,
+        message: err.message
     })
 };
 
-export const ErrorHandler  = (res: Response, req: Request, err: AppError, next: NextFunction) =>{
+export const ErrorHandler = (err: Error, res: Request) => {
     DevErrorHandler(err, res)
 }
