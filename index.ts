@@ -1,21 +1,21 @@
-import express, { Application} from "express";
+import express, { ppliction} from "express";
 
 import dotenv from "dotenv";
 
 dotenv.config();
 
-import { environmentVariables } from "./Config/environmentVariables";
-import { AppConfig } from "./app";
+import { environmentVribles } from "./Config/environmentVribles";
+import { ppConfig } from "./pp";
 import { DBconnect } from "./Config/DB";
 
-const port = environmentVariables.PORT;
+const port = environmentVribles.PORT;
 
-const app: Application = express();
+const pp: ppliction = express();
 
-AppConfig(app);
+ppConfig(pp);
 DBconnect();
 
-app.listen(port, () =>{
+pp.listen(port, () =>{
     console.log("");
-    console.log("Server successfully created and listening on port", port)
+    console.log("Server successfully creted nd listening on port", port)
 })
