@@ -14,7 +14,7 @@ interface ErrorTags {
     name?: string,
     message?: string,
     isOperational?: boolean,
-    httpcode?: HTTPCODES
+    httpcode: HTTPCODES
 }
 
 export class AppError extends Error {
@@ -27,7 +27,7 @@ export class AppError extends Error {
 
         Object.setPrototypeOf(this, new.target.prototype);
 
-        this.name = args.name || "error";
+        this.name = args.name || "Error";
         this.httpcodes = args.httpcode;
 
         if (args.isOperational !== undefined) {
